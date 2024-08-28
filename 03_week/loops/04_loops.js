@@ -10,7 +10,7 @@ function askNum() {
             console.log('even number: ',enterNum);
         }
     }
-    console.log(allNum);
+    console.log('entered numbers are: ', allNum);
     
 }
 askNum();

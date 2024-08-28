@@ -22,10 +22,10 @@ averageSpeed();
 
 /*   for(let i = 0; i < 5; i++) {
         dis = prompt('Enter value for kilometers');
-        time = prompt('Enter value for time');
         if(dis == '0'){
             break;
         }else {
+            time = prompt('Enter value for time');
             speed = (dis / time);
         }
         console.log('Average speed is: ',speed);
