@@ -6,15 +6,6 @@ for(let num = 2; num < lastNum; num+=2){
 }
 console.log(answer);
 
-/* example: 
-// let i, sum = ""
-// for(i=1;i<=5;i++){
-//   sum = sum + i + " "
-// }
-// console.log(sum)
-
-*/
-
 
 // or
 
