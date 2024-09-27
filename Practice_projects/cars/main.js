@@ -2,8 +2,6 @@
 'use strict';
 
 const form = document.querySelector('#car');
-
-const main = document.querySelector('.main-form');
 const cars = [];
 /* Creating a class for Car objects */
 
@@ -43,6 +41,7 @@ form.addEventListener('submit', (event)=>{
 
 });
 
+
 const displayTable = ()=> {
     //console.log(cars);
     const table = document.querySelector('.car-table');
@@ -57,32 +56,43 @@ const displayTable = ()=> {
             cell.textContent = text;
         });
     });
-}
+};
 
 
 const displayError = (error)=>{
-    const newDiv = document.createElement('div');
-    newDiv.setAttribute('class', 'display-msg');
-    const newtext = document.createElement('p');
-    newDiv.appendChild(newtext);
-    main.appendChild(newDiv);
-    newtext.textContent = `${error.message}`
-    return newtext;
-}
+    const showData = document.querySelector('.showData');
+    const newtext = document.createElement('p'); 
+    showData.appendChild(newtext);
+    newtext.textContent = `${error.message}`;
+};
 
+const searchCar = document.querySelector('#searchCar');
 
+searchCar.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    //console.log(cars);
+    //using our cars array to find car
+    const findCar = document.querySelector('#search').value;
+    cars.forEach((car) => {
+        try {
+            if(findCar == car.plateNo) {
+                //console.log('donee');
+                const showData = document.querySelector('.showData');
+                const newDiv = document.createElement('div');
+                newDiv.setAttribute('class', 'display-msg');
+                const newtext = document.createElement('p');
+                newDiv.appendChild(newtext);
+                showData.appendChild(newDiv);
+                newtext.textContent = `The Licence plate with ${findCar} has ${car.carColor} color.`;
+            }else {
+                throw new ReferenceError(`Sorry, License plate with ${findCar} is not found.`);
+            }
+        } catch (error) {
+            displayError(error);
+        }
 
-// const searchCar = document.querySelector('#searchCar');
-// searchCar.addEventListener('submit', (e)=>{
-//     const table = document.querySelector('.car-table');
-//     const tableData = new DataTable(e.target);
-//     const searchTable = function (){
-//         if(e.target.value === table.rows.value) {
-
-//         }
-//     }
+   });
     
-
-// });
+});
 
   /* we can add license plate and other objects individually with selecting id.*/

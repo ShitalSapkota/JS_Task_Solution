@@ -17,10 +17,7 @@
           <input type="text" id="search" />
           <button type="submit">Search</button>
         </form>
-        <!-- <table id="display-search-value"> -->
-          <tr>
-          </tr>
-        </table>
+        <button><a href="">Reset</a></button>
       </div>
       <div class="main-form">
         <h2> Insert car data </h2>
@@ -53,9 +50,12 @@
               <label for="year">Year</label>
               <input type="text" name="year" id="year" />
             </div>
-            <button type="submit">Add Car</button>
-            <button><a href="">Reset</a></button>
+            <div class="form-car">
+              <button type="submit">Add Car</button>
+            </div>
+            
           </form>
+          
       </div>
 
         <aside class="aside">
@@ -71,13 +71,14 @@
                 <th>Price</th>
                 <th>Color</th>
                 <th>Year</th>
-              </tr>
-             
+              </tr>      
             </table>
-              
+
+
+            </div>
           </div>
-    
         </aside>
+        <div class="showData"></div>
     </main>
 
     <script src="main.js"></script>
