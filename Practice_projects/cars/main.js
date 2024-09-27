@@ -17,14 +17,14 @@ class Car{
         this.carColor = carColor;
         this.year = year;
     }
-
-  
 }
 
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
     const carData = new FormData(event.target);
     const carObject = Object.fromEntries(carData.entries());
+    
+
     const car = new Car(carObject.plate, carObject.maker, carObject.model, carObject.owner, carObject.price, carObject.color, carObject.year);
 
     cars.push(car);    //  array
