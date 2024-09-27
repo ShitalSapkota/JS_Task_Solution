@@ -1,0 +1,75 @@
+* {
+	box-sizing: border-box;
+}
+
+.hidden {
+	display: none;
+}
+
+#container {
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid #000000;
+}
+
+header {
+	text-align: center;
+	border-bottom: 2px solid #000000;
+}
+
+#sidebar {
+	width: 30px;
+	position: absolute;
+	top: 20px;
+	right: 0px;
+	display: flex;
+}
+
+#toggleSidebar {
+	width: 30px;
+	background-color: #ccc;
+	padding: 5px;
+	border: 1px solid #000000;
+	writing-mode: vertical-lr;
+	text-orientation: upright;
+	font-weight: bold;
+}
+
+#animalForm {
+	width: 300px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+}
+
+#animalForm h2 {
+	margin-top: 0;
+}
+
+#animalForm label {
+	display: block;
+	margin: 10px 0 5px;
+}
+
+#animalForm input, #animalForm select, #animalForm textarea {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+#animalForm button {
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#animalForm button:hover {
+	background-color: #45a049;
+}

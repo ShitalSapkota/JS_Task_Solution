@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pancake Maker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-container">
+        <img src="pancake.jpeg" alt="Delicious pancakes" />
+        <div class="price-banner"><span id="totalPrice">$5</span></div>
+      </div>
+      <div class="form-container">
+        <h2>Customize Your Pancake</h2>
+        <div class="customization-section">
+          <label for="type">Choose your pancake type:</label>
+          <select id="type">
+            <option value="5">Classic - $5</option>
+            <option value="6">Chocolate - $6</option>
+            <option value="7">Blueberry - $7</option>
+          </select>
+        </div>
+        <div class="customization-section">
+          <p>Select your toppings ($1 each):</p>
+          <input type="checkbox" id="nuts" value="1" />Nuts<br />
+          <input type="checkbox" id="bananas" value="1" />Bananas<br />
+          <input type="checkbox" id="syrup" value="1" />Syrup<br />
+        </div>
+        <div class="customization-section">
+          <p>Add extras:</p>
+          <input type="checkbox" id="whippedCream" value="2" />Whipped Cream -
+          $2<br />
+          <input type="checkbox" id="iceCream" value="3" />Ice Cream - $3<br />
+        </div>
+        <div class="customization-section">
+          <fieldset>
+            <div>
+              <label for="userName">Name: </label>
+              <input type="text" id="userName" required/>
+            </div>
+            <div>
+              <p> Delivery Charge $5</p>
+              <input type="radio" id="eat" name="choose" value="eat" checked />
+              <label for="eat">Eat</label>
+            </div>
+            <div>
+              <input type="radio" id="pickUp" name="choose" value="pickUp" />
+              <label for="pickUp">Pick Up</label>
+            </div>
+            <div>
+              <input type="radio" id="deliver" name="choose" value="5" />
+              <label for="deliver">Deliver</label>
+            </div>
+            <button id="submit"> SUBMIT </button>
+        <div class="price-display">
+          <h3>Total Price: <span id="totalPrice">$5</span></h3>
+        </div>
+        <div>
+          <button id="seeOrder">See Order</button>
+          <p> Your's Order are:</p>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

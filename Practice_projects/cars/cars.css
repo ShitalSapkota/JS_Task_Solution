@@ -1,0 +1,82 @@
+* {
+  color: rgba(88, 20, 20, 0.874);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+  color: rgb(28, 3, 193);
+  text-align: center;
+  text-decoration: underline;
+}
+
+hr {
+  height: 20px;
+  width: 100%;
+  background-color: rgb(134, 176, 243);
+}
+
+h2 {
+  color: rgb(85, 61, 241);
+  text-align: center;
+}
+
+main {
+  max-height: fit-content;
+  margin: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+
+.form-car {
+  margin: 10px;
+  padding: 10px;
+  align-items: start;
+  gap: 10px;
+  
+ 
+}
+
+input {
+  width: 160px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  display: inline-block;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+
+}
+
+aside {
+  align-items: center;
+}
+
+table {
+  background-color: lightcoral;
+  border-color: black;
+  border: 0.1ch;
+
+}
+
+.car-data {
+  display: grid;
+  color: white;
+  padding: 10px;
+  
+}
+
+button {
+  background-color: rgb(182, 108, 243);
+  border: none;
+  width: 100px;
+  height: 30px;
+  font: bold;
+  color: white;
+  border-radius: 6%;
+}

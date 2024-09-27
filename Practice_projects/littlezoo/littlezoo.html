@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Little Zoo</title>
+	<link rel="stylesheet" href="littlezoo.css">
+	<!-- This is the modern way to include JavaScript files. Defer attribute delays JS execution until after the HTML page has fully loaded. -->
+	<script src="littlezoo.js" defer></script>
+</head>
+<body>
+
+<div id="container">
+	<header>
+		<h1>Little Zoo<h1>
+	</header>
+	
+	<main>
+		<div id="animalList">
+			<div id="searchFilters">
+				<select id="filterType">
+				  <option value="">Select type</option>
+				  <option value="Mammal">Mammal</option>
+				  <option value="Bird">Bird</option>
+				  <option value="Reptile">Reptile</option>
+				  <option value="Amphibian">Amphibian</option>
+				  <option value="Fish">Fish</option>
+				</select>
+				
+				<select id="filterGender">
+				  <option value="">Select gender</option>
+				  <option value="Male">Male</option>
+				  <option value="Female">Female</option>
+				</select>
+				
+				<input type="text" id="animalSearch" placeholder="Search...">
+			</div>
+			<div id="animalDisplay"></div>
+		</div> <!-- #animalList -->
+		<div id="sidebar">
+			<div id="toggleSidebar">Show form</div>
+			<form id="animalForm" class="hidden">
+				<h2>Add New Animal</h2>
+
+				<label for="name">Animal Name:</label>
+				<input type="text" id="name" name="name" required>
+
+				<label for="age">Age:</label>
+				<input type="number" id="age" name="age" min="0" required>
+
+				<label for="gender">Gender:</label>
+				<select id="gender" name="gender" required>
+				  <option value="">Select gender</option>
+				  <option value="Male">Male</option>
+				  <option value="Female">Female</option>
+				</select>
+
+				<label for="species">Species:</label>
+				<input type="text" id="species" name="species" required>
+
+				<label for="type">Type:</label>
+				<select id="type" name="type" required>
+				  <option value="">Select type</option>
+				  <option value="Mammal">Mammal</option>
+				  <option value="Bird">Bird</option>
+				  <option value="Reptile">Reptile</option>
+				  <option value="Amphibian">Amphibian</option>
+				  <option value="Fish">Fish</option>
+				</select>
+
+				<label for="description">Description:</label>
+				<textarea id="description" name="description" rows="4" required></textarea>
+
+				<button type="submit" id="addAnimalButton">Add Animal</button>
+			</form>
+		</div> <!-- #sidebar -->
+	</main>
+</div> <!-- #container -->
+
+</body>
+</html>
