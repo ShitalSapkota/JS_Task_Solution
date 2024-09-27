@@ -34,11 +34,16 @@ main {
 
 .search-form {
   grid-column: 1 / span 4;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 1;
 }
 
 .main-form {
   grid-column: 1 / span 2 ;
+  grid-row: 2 / span 4;
+}
+
+aside {
+  grid-column: 3/ span 4;
   grid-row: 2 / span 4;
 }
 
@@ -51,7 +56,7 @@ main {
 
 input {
   width: 160px;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
@@ -63,26 +68,21 @@ label {
 
 }
 
-aside {
-  grid-column: 3/ span 4;
-  grid-row: 2 / span 4;
-}
-
-table {
+table th, td {
   background-color: lightcoral;
-  border-color: lightcoral;
-  border: 0.1 solid;
+  color: white;
+  height: 20px;
+  padding: 10px;
 
 }
 
-th {
-  gap: 2px;
-  border-color: white;
-  border: 0.1 solid;
+.display-msg {
+  font-size: 20px;
 }
 
-.car-data {
-  display: grid;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 button {

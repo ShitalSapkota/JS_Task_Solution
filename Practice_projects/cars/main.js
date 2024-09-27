@@ -3,8 +3,8 @@
 
 const form = document.querySelector('#car');
 
+const main = document.querySelector('.main-form');
 const cars = [];
-
 /* Creating a class for Car objects */
 
 class Car{
@@ -22,20 +22,28 @@ class Car{
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
     const carData = new FormData(event.target);
+     // form validation...
     const carObject = Object.fromEntries(carData.entries());
-    
+    // console.log(carObject);
+    try {
+        if((carObject.year >= 1886 && carObject.year <=2024) && (carObject.plate != '' && carObject.price >= 0)) {
+            const car = new Car(carObject.plate, carObject.maker, carObject.model, carObject.owner, carObject.price, carObject.color, carObject.year);
 
-    const car = new Car(carObject.plate, carObject.maker, carObject.model, carObject.owner, carObject.price, carObject.color, carObject.year);
-
-    cars.push(car);    //  array
-    //console.log(cars);
-    displayTable();
-    
-   // car.printData();      // ----> to check value
+            cars.push(car);      
+              //  array
+            //console.log(cars);
+            displayTable();
+            
+        } else {
+            throw new ReferenceError('Licence Plate must not be empty and enter Year between 1886 and the current year. Price must be a positive number');
+        }
+    } catch (error) {
+        displayError(error);
+    }
 
 });
 
-const displayTable = () => {
+const displayTable = ()=> {
     //console.log(cars);
     const table = document.querySelector('.car-table');
     table.innerHTML = table.rows[0].innerHTML;
@@ -52,6 +60,18 @@ const displayTable = () => {
 }
 
 
+const displayError = (error)=>{
+    const newDiv = document.createElement('div');
+    newDiv.setAttribute('class', 'display-msg');
+    const newtext = document.createElement('p');
+    newDiv.appendChild(newtext);
+    main.appendChild(newDiv);
+    newtext.textContent = `${error.message}`
+    return newtext;
+}
+
+
+
 // const searchCar = document.querySelector('#searchCar');
 // searchCar.addEventListener('submit', (e)=>{
 //     const table = document.querySelector('.car-table');
@@ -65,23 +85,4 @@ const displayTable = () => {
 
 // });
 
-
-
-
-
-
   /* we can add license plate and other objects individually with selecting id.*/
-/*  const plateNo = document.querySelector('#plate').value;
-    const carMaker = document.querySelector('#maker').value;
-    const carModel = document.querySelector('#model').value;
-    const carOwner = document.querySelector('#owner').value;
-    const carPrice = document.querySelector('#price').value;
-    const carColor = document.querySelector('#color').value; */
-    //const newCar = new Car(plateNo, carMaker, carModel, carOwner, carPrice, carColor);
-
-
-    // inside class
-      // printData(){
-    //     return `${this.plateNo} ${this.carMaker} ${this.carModel} ${this.carOwner} ${this.carPrice} ${this.carColor}` 
-    //    // console.log(this.plateNo, this.carModel, this.carPrice);
-    // }
