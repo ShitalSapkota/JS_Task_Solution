@@ -10,43 +10,55 @@
     <h1> About Cars</h1>
     <hr>
     <main>
-        <div class="main-form">
-          <h2> Insert car data </h2>
-            <form id="car">
-              <div class="form-car">
-                <label for="plate">License number </label>
-                <input type="text" name="plate" id="plate" />
-              </div>
-              <div class="form-car">
-                <label for="maker">Car maker </label>
-                <input type="text" name="maker" id="maker" />
-              </div>
-              <div class="form-car">
-                <label for="model">Car model </label>
-                <input type="text" name="model" id="model" />
-              </div>
-              <div class="form-car">
-                <label for="owner">Car owner </label>
-                <input type="text" name="owner" id="owner" />
-              </div>
-              <div class="form-car">
-                <label for="price">Car price </label>
-                <input type="number" name="price" id="price" />
-              </div>
-              <div class="form-car">
-                <label for="color">Car color </label>
-                <input type="text" name="color" id="color" />
-              </div>
-              <div class="form-car">
-                <label for="year">Year</label>
-                <input type="text" name="year" id="year" />
-              </div>
-              <button type="submit">Add Car</button>
-              <button>Reset</button>
-            </form>
-        </div>
+      <div class="search-form">
+        <form id="searchCar">
+          <h2>Search</h2>
+          <label for="search">License</label>
+          <input type="text" id="search" />
+          <button type="submit">Search</button>
+        </form>
+        <!-- <table id="display-search-value"> -->
+          <tr>
+          </tr>
+        </table>
+      </div>
+      <div class="main-form">
+        <h2> Insert car data </h2>
+          <form id="car">
+            <div class="form-car">
+              <label for="plate">License number </label>
+              <input type="text" name="plate" id="plate" />
+            </div>
+            <div class="form-car">
+              <label for="maker">Car maker </label>
+              <input type="text" name="maker" id="maker" />
+            </div>
+            <div class="form-car">
+              <label for="model">Car model </label>
+              <input type="text" name="model" id="model" />
+            </div>
+            <div class="form-car">
+              <label for="owner">Car owner </label>
+              <input type="text" name="owner" id="owner" />
+            </div>
+            <div class="form-car">
+              <label for="price">Car price </label>
+              <input type="number" name="price" id="price" />
+            </div>
+            <div class="form-car">
+              <label for="color">Car color </label>
+              <input type="text" name="color" id="color" />
+            </div>
+            <div class="form-car">
+              <label for="year">Year</label>
+              <input type="text" name="year" id="year" />
+            </div>
+            <button type="submit">Add Car</button>
+            <button>Reset</button>
+          </form>
+      </div>
 
-        <aside>
+        <aside class="aside">
           <h2>Car's Database</h2>
           <div class="car-data">
             <table class="car-table">
@@ -62,18 +74,6 @@
               </tr>
              
             </table>
-            <div class="search-form">
-              <form id="searchCar">
-                <h2>Search</h2>
-                <label for="search">License</label>
-                <input type="text" id="search" />
-                <button type="submit">Search</button>
-              </form>
-              <table id="display-search-value">
-                <tr>
-                </tr>
-              </table>
-            </div>
               
           </div>
     

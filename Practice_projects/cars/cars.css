@@ -1,6 +1,8 @@
 * {
   color: rgba(88, 20, 20, 0.874);
   font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 2px;
+  padding: 2px;
 }
 
 h1 {
@@ -17,26 +19,34 @@ hr {
 
 h2 {
   color: rgb(85, 61, 241);
-  text-align: center;
+  text-align: start;
 }
 
 main {
-  max-height: fit-content;
+  max-height: 1000px;
   margin: 10px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 
 }
 
+.search-form {
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 2;
+}
+
+.main-form {
+  grid-column: 1 / span 2 ;
+  grid-row: 2 / span 4;
+}
 
 .form-car {
-  margin: 10px;
-  padding: 10px;
+  margin: 5px;
+  padding: 5px;
   align-items: start;
-  gap: 10px;
   
- 
 }
 
 input {
@@ -54,21 +64,25 @@ label {
 }
 
 aside {
-  align-items: center;
+  grid-column: 3/ span 4;
+  grid-row: 2 / span 4;
 }
 
 table {
   background-color: lightcoral;
-  border-color: black;
-  border: 0.1ch;
+  border-color: lightcoral;
+  border: 0.1 solid;
 
+}
+
+th {
+  gap: 2px;
+  border-color: white;
+  border: 0.1 solid;
 }
 
 .car-data {
   display: grid;
-  color: white;
-  padding: 10px;
-  
 }
 
 button {
