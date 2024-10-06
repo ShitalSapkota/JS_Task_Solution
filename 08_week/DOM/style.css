@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overscroll-behavior: none;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background-color: rgb(221 162 174);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+p {
+    line-height: 1.4;
+}
+
+
+header, section, footer {
+    padding: 2rem;
+}
+
+/* header, section {
+    background: url(assets/jasmine.jpg) no-repeat fixed center center/cover;
+    color: aliceblue;
+} */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    position: sticky;
+    /* background-color: aliceblue; */
+    align-items: center;
+    top: 0;
+}
+
+nav ul li{
+    display: inline-block;
+}
+
+
+.mobile {
+    display: none;
+}
+
+
+section {
+    height: 60vh;
+    scroll-margin-top: 150px;
+    padding-top: 100px;
+
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+    padding: 1rem 2rem;
+    font-family: inherit;
+    background-color: rgb(251, 212, 132);
+    font-size: inherit;
+}
+
+#backTop {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+}
+
+section:first-child {
+    /* background-color: lightpink; */
+    /* background-image: url(assets/jasmine.jpg); */
+    background: url(assets/jasmine.jpg) no-repeat fixed center center/cover;
+    color: aliceblue;
+    height: 80vh;
+}
+
+section:nth-child(2) {
+    background-color: lightsalmon;
+}
+
+section:last-child {
+    background-color: lightblue;
+}
+
+
+/* Project Modal */
+
+.overlay {
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background-color: rgb(244, 200, 146);
+    color: rgb(65, 41, 41);
+    border-radius: 5px;
+    box-shadow: 0 0 5px #432323;
+    padding: 2rem;
+    width: 80vw;
+    position: relative;
+}
+
+.endmodal {
+    background-color: rgb(245, 168, 74);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border-radius: 80px;
+}
+
+.overlay.visible{
+    display: flex;
+}
+
+
+@media (max-width:800px) {
+    .mobile {
+        display: block;
+        background-color: rgb(222, 106, 248);
+        color: azure;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav ul.responsive {
+        display: block;
+        background-color: rgb(227, 203, 250);
+        color: bisque;
+        position: absolute;
+        left: 0;
+        width: 100%;   
+    }
+
+    ul.responsive li {
+        display: block;
+        margin: 2rem 2rem;
+    }
+
+    header {
+        background-color: rgb(227, 203, 250);
+    }
+
+}

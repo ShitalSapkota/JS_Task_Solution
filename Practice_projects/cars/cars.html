@@ -17,41 +17,45 @@
           <input type="text" id="search" />
           <button type="submit">Search</button>
         </form>
-        <button><a href="">Reset</a></button>
       </div>
+      <div class="showData">
+        <p class="displayMsg"></p>
+      </div>
+  
       <div class="main-form">
         <h2> Insert car data </h2>
           <form id="car">
             <div class="form-car">
-              <label for="plate">License number </label>
+              <label for="plate">License number* </label>
               <input type="text" name="plate" id="plate" />
             </div>
             <div class="form-car">
-              <label for="maker">Car maker </label>
+              <label for="maker">Car maker* </label>
               <input type="text" name="maker" id="maker" />
             </div>
             <div class="form-car">
-              <label for="model">Car model </label>
+              <label for="model">Car model* </label>
               <input type="text" name="model" id="model" />
             </div>
             <div class="form-car">
-              <label for="owner">Car owner </label>
+              <label for="owner">Car owner* </label>
               <input type="text" name="owner" id="owner" />
             </div>
             <div class="form-car">
-              <label for="price">Car price </label>
+              <label for="price">Original price* </label>
               <input type="number" name="price" id="price" />
             </div>
             <div class="form-car">
-              <label for="color">Car color </label>
+              <label for="color">Car color* </label>
               <input type="text" name="color" id="color" />
             </div>
             <div class="form-car">
-              <label for="year">Year</label>
+              <label for="year">Year*</label>
               <input type="text" name="year" id="year" />
             </div>
             <div class="form-car">
               <button type="submit">Add Car</button>
+              <button type="reset">Reset</button>
             </div>
             
           </form>
@@ -68,9 +72,10 @@
                 <th>Maker</th>
                 <th>Model</th>
                 <th>Owner</th>
-                <th>Price</th>
                 <th>Color</th>
                 <th>Year</th>
+                <th>Original Price</th>
+                <th>Discount Price</th>
               </tr>      
             </table>
 
@@ -78,7 +83,7 @@
             </div>
           </div>
         </aside>
-        <div class="showData"></div>
+       
     </main>
 
     <script src="main.js"></script>

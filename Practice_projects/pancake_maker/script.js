@@ -4,23 +4,29 @@ const priceBanner = document.querySelector('.price-banner');
 const priceDisplay = document.querySelector('.price-display');
 const extra_toppings = document.querySelectorAll('input[type=checkbox]');
 
+const button = document.querySelector('#submit');
 
 /* Step 2 */
 const radios = document.querySelectorAll('input[type=radio]');
 const seeOrder = document.querySelector('#seeOrder');
-let orderlist = [];
+const order = {Name: '', Pancake: '', Toppings: '', Delivery_Method: '', Total_Price: ''};
 let isDeliverSelected = false;
 let isChanged = false;
 
 //console.log(pancake.value);
 let totalPrice = parseInt(pancake.value);
 
+order.Pancake = 'Classic - $5';
+
+console.log(order);
 /* If Pancake is select */
 
 pancake.addEventListener('change', function(){
   totalPrice = parseInt(pancake.value);
   priceBanner.textContent = `$${pancake.value}`;
   priceDisplay.querySelector('#totalPrice').textContent = `$${pancake.value}`;
+  order.Pancake = `${pancake.text}`;
+  console.log(order);
 });
 
 

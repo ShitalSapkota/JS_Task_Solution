@@ -1,8 +1,8 @@
 * {
   color: rgba(88, 20, 20, 0.874);
   font-family: Georgia, 'Times New Roman', Times, serif;
-  margin: 2px;
-  padding: 2px;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -27,8 +27,9 @@ main {
   margin: 10px;
   padding: 10px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  position: relative;
 
 }
 
@@ -38,18 +39,21 @@ main {
 }
 
 .main-form {
+  position: absolute;
   grid-column: 1 / span 2 ;
-  grid-row: 2 / span 4;
+  grid-row: 3 / span 6;
 }
 
 aside {
-  grid-column: 3/ span 4;
-  grid-row: 1 / span 4;
+  position: absolute;
+  grid-column: 3/ span 6;
+  grid-row: 3/ span 6;
 }
 
 .showData {
-  grid-row: 3 / span 3;
-  grid-column: 3 / span 4;
+  position: absolute;
+  grid-row: 1 / span 3;
+  grid-column: 3 / span 5;
 }
 
 .form-car {
@@ -98,4 +102,5 @@ button {
   font: bold;
   color: white;
   border-radius: 6%;
+  margin: 5px;
 }
