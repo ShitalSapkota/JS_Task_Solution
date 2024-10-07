@@ -3,8 +3,7 @@
 
 const form = document.querySelector('#car');
 const searchCar = document.querySelector('#searchCar');
-const checkData = localStorage.getItem('cars');
-let cars = [];
+
 /* Creating a class for Car objects */
 
 class Car{
@@ -30,58 +29,51 @@ const displayError = (error)=>{
 
 /* copied displayTable function from Margit's code and added indexing row for the table. */
 const displayTable = ()=> {
-    //console.log(cars);
-    const carData = JSON.parse(localStorage.getItem('cars'));
-    //console.log(carData);
-    const deleteRow = document.createElement('button');
-    deleteRow.classList.add("delete"); 
-    deleteRow.textContent = "Delete";
-    // delete button added
+    //const carData = JSON.parse(localStorage.getItem('cars'));
+    const car_keys  = Object.keys(localStorage)                 // get all keys at once using Object.keys
+    //console.log(car_keys)
+    if(car_keys){
     const table = document.querySelector('.car-table');
     table.innerHTML = table.rows[0].innerHTML;
-    carData.forEach((car,index) => {
+    car_keys.forEach((carData,index) => {
+        const car = JSON.parse(localStorage.getItem(carData));
+        //console.log(carsData);
+        
         const row = table.insertRow(-1);
-        const indexing = row.insertCell(0);        //
-        indexing.textContent = index + 1 ;
+        const indexing = row.insertCell(0);        //  S:N added
+        indexing.textContent = index + 1 ; 
+        //console.log(car)
         Object.values(car).forEach(text => {
             const cell = row.insertCell(-1);
-            cell.textContent = text;
-
+            cell.textContent = text;   
         });
-/*         row.insertCell(-1).appendChild(deleteRow)
-        deleteRow.addEventListener("click", () => deleteData(key)); */
-
-    });
-
+        const deleteRow = document.createElement('button');
+        deleteRow.classList.add("delete"); 
+        deleteRow.textContent = "Delete";
+        deleteRow.addEventListener("click", () => deleteData(carData));
+        row.insertCell(-1).appendChild(deleteRow);
+    }); 
+    }
 };
 
+displayTable();                         // refreshing table data
 
-if(checkData !== null) {
-   // console.log(checkData);
-    const localStorageCar = JSON.parse(checkData);
-    console.log(localStorageCar);
-    cars = localStorageCar;
-    console.log(cars);
-    displayTable();
+const deleteData = (carData)=>{
+    localStorage.removeItem(carData);               // remove 
+    displayTable()
 }
 
-
-const deleteData = (key)=>{
-    console.log(key);
-    localStorage.removeItem(index);
-    displayTable();
-}
 
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
     
     const carData = new FormData(event.target);
-    const carObject = Object.fromEntries(carData.entries());
+    const carObject = Object.fromEntries(carData.entries()); 
+                                                                /* we can fetch values individually with select id.*/
     const currentYear = new Date().getFullYear();                               // copied
-    //console.log(carObject);
-    // form validation...
     let discount_price = 0;
-    //console.log(car);  
+
+        // form validation...
     try {
        // console.log(carObject);  
         if(!carObject.plate || !carObject.maker || !carObject.model|| !carObject.owner|| isNaN(carObject.price) || !carObject.color || isNaN(carObject.year)){
@@ -105,11 +97,8 @@ form.addEventListener('submit', (event)=>{
         const car = new Car(carObject.plate, carObject.maker, carObject.model, carObject.owner, carObject.color, carObject.year, carObject.price, discount_price);
          
         form.reset()
-
-        cars.push(car);          //  array  
-        //console.log(cars);
         // added local storage step 3:
-        localStorage.setItem('cars', JSON.stringify(cars));
+        localStorage.setItem(car.plateNo, JSON.stringify(car));             // add cr license plate no. as a key.
         displayTable()
 
         } catch (error) {
@@ -149,5 +138,3 @@ searchCar.addEventListener('submit', (e)=>{
     
 });
 
-
-/* we can add license plate and other objects individually with selecting id.*/

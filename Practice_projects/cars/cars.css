@@ -104,3 +104,8 @@ button {
   border-radius: 6%;
   margin: 5px;
 }
+
+.displayMsg {
+  color: red;
+  box-sizing: border-box;
+}

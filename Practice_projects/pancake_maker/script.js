@@ -18,7 +18,7 @@ let totalPrice = parseInt(pancake.value);
 
 order.Pancake = 'Classic - $5';
 
-console.log(order);
+//console.log(order);
 /* If Pancake is select */
 
 pancake.addEventListener('change', function(){
@@ -26,7 +26,7 @@ pancake.addEventListener('change', function(){
   priceBanner.textContent = `$${pancake.value}`;
   priceDisplay.querySelector('#totalPrice').textContent = `$${pancake.value}`;
   order.Pancake = `${pancake.text}`;
-  console.log(order);
+  //console.log(order);
 });
 
 
