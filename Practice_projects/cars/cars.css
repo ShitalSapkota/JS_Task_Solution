@@ -41,7 +41,7 @@ main {
 .main-form {
   position: absolute;
   grid-column: 1 / span 2 ;
-  grid-row: 3 / span 6;
+  grid-row: 2 / span 6;
 }
 
 aside {
@@ -53,23 +53,18 @@ aside {
 .showData {
   position: absolute;
   grid-row: 1 / span 3;
-  grid-column: 3 / span 5;
-}
-
-.form-car {
-  margin: 5px;
-  padding: 5px;
-  align-items: start;
-  
+  grid-column: 4/ span 5;
 }
 
 input {
   width: 160px;
-  padding: 10px;
+  height: 20px;
+  padding: 7px;
+  margin: 7px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-  display: inline-block;
+  display: inline;
 }
 
 label {
@@ -85,9 +80,6 @@ table th, td {
 
 }
 
-.display-msg {
-  font-size: 20px;
-}
 
 a {
   color: inherit;
@@ -106,6 +98,13 @@ button {
 }
 
 .displayMsg {
+  font-size: 20px;
   color: red;
   box-sizing: border-box;
+  
+}
+
+
+.displayMsg p {
+  color: green;
 }

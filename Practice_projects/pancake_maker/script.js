@@ -9,9 +9,9 @@ const button = document.querySelector('#submit');
 /* Step 2 */
 const radios = document.querySelectorAll('input[type=radio]');
 const seeOrder = document.querySelector('#seeOrder');
-const order = {Name: '', Pancake: '', Toppings: '', Delivery_Method: '', Total_Price: ''};
+const toppings = [];
+const order = {name: '' , option: '', toppings, Pancake: ''};
 let isDeliverSelected = false;
-let isChanged = false;
 
 //console.log(pancake.value);
 let totalPrice = parseInt(pancake.value);
@@ -22,36 +22,48 @@ order.Pancake = 'Classic - $5';
 /* If Pancake is select */
 
 pancake.addEventListener('change', function(){
+
   totalPrice = parseInt(pancake.value);
   priceBanner.textContent = `$${pancake.value}`;
   priceDisplay.querySelector('#totalPrice').textContent = `$${pancake.value}`;
-  order.Pancake = `${pancake.text}`;
-  //console.log(order);
+  //console.log(pancake.textContent);
 });
 
 
-/* If toppings are selected */
+/* If toppings are selected */ 
 
 extra_toppings.forEach((topping) => {
-  topping.addEventListener('click', () => {
+  topping.addEventListener('click', () => {  
       if(topping.checked) {
         totalPrice = totalPrice + parseInt(topping.value);
         priceBanner.textContent = `$${totalPrice}`;
         priceDisplay.querySelector('#totalPrice').textContent = `$${totalPrice}`;
-    
+        toppings.push(topping.id);
       }else{
         totalPrice = totalPrice - parseInt(topping.value);
         priceBanner.textContent = `$${totalPrice}`;
         priceDisplay.querySelector('#totalPrice').textContent = `$${totalPrice}`;
       }
-  
+      
   });
 });
 
 
 /* If Order (radio buttons) options selected */
 button.addEventListener('click', function() {
+  const userName = document.querySelector('#userName').value;
+  const eat = document.querySelector('label[for= eat]').innerHTML;
+  const pickup = document.querySelector('label[for= pickUp]').innerHTML;
+  const deliver = document.querySelector('label[for= deliver]').innerHTML;
+  order.name = userName;
   for (let radio of radios) {
+    if(radio.checked && radio.id == 'eat'){
+      order.option = eat;
+    }
+    if(radio.checked && radio.id == 'pickUp'){
+      order.option = pickup;
+    }
+   
     if (radio.checked && radio.id === 'deliver') {
       if(!isDeliverSelected) {
         if(radio.value === '5') {
@@ -59,22 +71,24 @@ button.addEventListener('click', function() {
           priceBanner.textContent = `$${totalPrice}`;
           priceDisplay.querySelector('#totalPrice').textContent = `$${totalPrice}`;
           isDeliverSelected = true;
+          order.option = deliver;
         }
       }
-     
+      
     }else if(radio.checked && radio.id != 'deliver' && isDeliverSelected) {  
-        totalPrice = totalPrice - 5;
-        priceBanner.textContent = `$${totalPrice}`;
-        priceDisplay.querySelector('#totalPrice').textContent = `$${totalPrice}`;
-        isDeliverSelected = false;
+
+      totalPrice = totalPrice - 5;
+      priceBanner.textContent = `$${totalPrice}`;
+      priceDisplay.querySelector('#totalPrice').textContent = `$${totalPrice}`;
+      isDeliverSelected = false;
     }
-    //orderlist.push(radio.value);   ... have add this line and also if order list change need to change in array also
   }
 
 });
 
 seeOrder.addEventListener('click', () => {
-  // 
+  console.log(order);
+
 });
 
 

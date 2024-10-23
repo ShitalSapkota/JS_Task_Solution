@@ -3,7 +3,7 @@
 
 const form = document.querySelector('#car');
 const searchCar = document.querySelector('#searchCar');
-
+//const all_plate_num = [];
 /* Creating a class for Car objects */
 
 class Car{
@@ -15,7 +15,7 @@ class Car{
         this.carColor = carColor;
         this.year = parseInt(year);
         this.carPrice = `€ ${parseFloat(carPrice)}`;
-        this.discount_price = `€ ${discount_price}`;
+        this.discount_price = discount_price;
     }
 }
 
@@ -24,26 +24,28 @@ class Car{
 const displayError = (error)=>{   
     const showData = document.querySelector('.displayMsg');
     showData.textContent = `${error.message}`;
+    setTimeout(() => {
+        showData.textContent = "";
+    }, 3000);
 };
+
 
 
 /* copied displayTable function from Margit's code and added indexing row for the table. */
 const displayTable = ()=> {
     //const carData = JSON.parse(localStorage.getItem('cars'));
-    const car_keys  = Object.keys(localStorage)                 // get all keys at once using Object.keys
-    //console.log(car_keys)
+    const car_keys  = Object.keys(localStorage);                 // get all keys at once using Object.keys
     if(car_keys){
     const table = document.querySelector('.car-table');
     table.innerHTML = table.rows[0].innerHTML;
     car_keys.forEach((carData,index) => {
-        const car = JSON.parse(localStorage.getItem(carData));
-        //console.log(carsData);
-        
+        const cars = JSON.parse(localStorage.getItem(carData));
+       // console.log(cars);      
         const row = table.insertRow(-1);
         const indexing = row.insertCell(0);        //  S:N added
         indexing.textContent = index + 1 ; 
         //console.log(car)
-        Object.values(car).forEach(text => {
+        Object.values(cars).forEach(text => {
             const cell = row.insertCell(-1);
             cell.textContent = text;   
         });
@@ -52,6 +54,11 @@ const displayTable = ()=> {
         deleteRow.textContent = "Delete";
         deleteRow.addEventListener("click", () => deleteData(carData));
         row.insertCell(-1).appendChild(deleteRow);
+        const showData = document.querySelector('.displayMsg');
+        showData.innerHTML = `<p> Car's Data successfully Added</p>`
+        setTimeout(() => {
+            showData.textContent = "";
+        }, 3000);
     }); 
     }
 };
@@ -59,7 +66,14 @@ const displayTable = ()=> {
 displayTable();                         // refreshing table data
 
 const deleteData = (carData)=>{
-    localStorage.removeItem(carData);               // remove 
+    if(carData){
+        localStorage.removeItem(carData);
+        const showData = document.querySelector('.displayMsg');
+        showData.innerHTML = `<p> Car's Data successfully deleted</p>`
+        setTimeout(() => {
+            showData.textContent = "";
+        }, 3000);
+    }                   // remove 
     displayTable()
 }
 
@@ -89,7 +103,7 @@ form.addEventListener('submit', (event)=>{
         }
 
         if(currentYear - carObject.year >=10){
-            discount_price = carObject.price - (carObject.price * 0.15)
+            discount_price = `€ ${carObject.price - (carObject.price * 0.15)}`
         }else {
             discount_price = "No Discount";
         }
@@ -97,8 +111,9 @@ form.addEventListener('submit', (event)=>{
         const car = new Car(carObject.plate, carObject.maker, carObject.model, carObject.owner, carObject.color, carObject.year, carObject.price, discount_price);
          
         form.reset()
+        //all_plate_num = localStorage.setItem("cars", car.plateNo)
         // added local storage step 3:
-        localStorage.setItem(car.plateNo, JSON.stringify(car));             // add cr license plate no. as a key.
+        localStorage.setItem(car.plateNo, JSON.stringify(car));             // add car license plate no. as a key.
         displayTable()
 
         } catch (error) {
@@ -111,10 +126,9 @@ searchCar.addEventListener('submit', (e)=>{
     e.preventDefault();
     
     try{ 
-        const carData = JSON.parse(localStorage.getItem('cars'));    //  from local Storage data
         const findCar = document.querySelector('#search').value;
         if(findCar){
-            const resultCar = carData.find((car)=>car.plateNo === findCar);  
+            const resultCar = JSON.parse(localStorage.getItem(findCar)) 
             if(resultCar){  
                 const showData = document.querySelector('.displayMsg');
                 showData.innerHTML = `<p>License: ${resultCar.plateNo}</p>
@@ -131,10 +145,11 @@ searchCar.addEventListener('submit', (e)=>{
         }else {
             throw new Error('Search is empty!'); 
         }
-        
+
     } catch(error) {
         displayError(error);
     } 
-    
+       //  from local Storage data
+
 });
 

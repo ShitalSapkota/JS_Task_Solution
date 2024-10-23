@@ -1,0 +1,62 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* https://unsplash.com/backgrounds for background image */
+
+body {
+    background: url('assets/image/background.jpg') no-repeat;   
+    background-size: cover;
+    /*background-color: blanchedalmond;*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+
+}
+
+h1{
+    text-align: center;
+    background-color: rgb(233, 124, 46);
+}
+
+.container {
+    display: flex;
+    padding: 16px;   
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.card {
+    padding: 20px;
+    height: 500px;
+    width: 400px;  
+    border: 4px solid rgb(244, 137, 44); 
+    border-radius: 10px;
+    transition: all 300ms ease-in-out;
+   
+}
+
+.card:hover {
+    box-shadow: 0 0 300px rgb(182, 221, 160) inset;
+    background: rgb(151, 90, 142);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.card p {
+    font-size: 18px;
+    line-height: 10px;
+    margin-top: 30px;
+
+}
+
+.card img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    justify-self: center;
+}
