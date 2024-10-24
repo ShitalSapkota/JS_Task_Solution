@@ -1,100 +1,117 @@
-/* Pancake maker step 1:  */
+// Step 1:
 const pancake = document.querySelector('#type');
 const priceBanner = document.querySelector('.price-banner');
 const priceDisplay = document.querySelector('.price-display');
-const extra_toppings = document.querySelectorAll('input[type=checkbox]');
+const toppings = document.querySelectorAll('input[type=checkbox]');
+let totalPrice = 0;           
 
-const button = document.querySelector('#submit');
+// Step 2:
 
-/* Step 2 */
 const radios = document.querySelectorAll('input[type=radio]');
+const radioButton = document.querySelector('#submit');
+// Step 3:
+let toppings_order = [];       // to modify array values
+let extras_topping = [];         // to modify array values
 const seeOrder = document.querySelector('#seeOrder');
-const toppings = [];
-const order = {name: '' , option: '', toppings, Pancake: ''};
-let isDeliverSelected = false;
-
-//console.log(pancake.value);
-let totalPrice = parseInt(pancake.value);
-
-order.Pancake = 'Classic - $5';
-
-//console.log(order);
-/* If Pancake is select */
-
-pancake.addEventListener('change', function(){
-
-  totalPrice = parseInt(pancake.value);
-  priceBanner.textContent = `$${pancake.value}`;
-  priceDisplay.querySelector('#totalPrice').textContent = `$${pancake.value}`;
-  //console.log(pancake.textContent);
-});
+let deliveryMethod = "";
 
 
-/* If toppings are selected */ 
+class Order{
+  constructor(pancake, topping, extras, deliveryMethod, customerName){
+    this.pancake = pancake;
+    this.topping = topping;
+    this.extras = extras;
+    this.deliveryMethod= deliveryMethod;
+    this.customerName = customerName;
+  }
+}
 
-extra_toppings.forEach((topping) => {
-  topping.addEventListener('click', () => {  
-      if(topping.checked) {
-        totalPrice = totalPrice + parseInt(topping.value);
-        priceBanner.textContent = `$${totalPrice}`;
-        priceDisplay.querySelector('#totalPrice').textContent = `$${totalPrice}`;
-        toppings.push(topping.id);
-      }else{
-        totalPrice = totalPrice - parseInt(topping.value);
-        priceBanner.textContent = `$${totalPrice}`;
-        priceDisplay.querySelector('#totalPrice').textContent = `$${totalPrice}`;
-      }
-      
+function updatePrice(add_price) {
+  priceBanner.textContent = `€${add_price}`;
+  priceDisplay.querySelector('#totalPrice').textContent = `€${add_price}`;
+}
+
+// reset value when change event occurs
+function updateInitial() {
+  totalPrice = 0;                                   
+  toppings_order = [];
+  extras_topping = [];
+  for(let topping of toppings) {
+    if(topping.checked){
+      topping.checked = !topping.checked;
+    }
+  priceBanner.textContent = `€${pancake.value}`;
+  priceDisplay.querySelector('#totalPrice').textContent = `€${pancake.value}`;
+  }
+}
+
+// For all toppings (checkboxes)
+toppings.forEach((topping) => {
+  topping.addEventListener('click', (e) => {  
+    const label = document.querySelector(`label[for="${e.target.id}"]`);          // selecting label via event
+    let price;
+    if(topping.checked && topping.name ==='topping'){
+      totalPrice = totalPrice + parseInt(topping.value)
+      price = parseInt(pancake.value) + totalPrice
+      updatePrice(price)
+      toppings_order.push(label.textContent); 
+    }
+    if(topping.checked && topping.name ==='extra'){
+      totalPrice = totalPrice + parseInt(topping.value)
+      price = parseInt(pancake.value) + totalPrice
+      updatePrice(price)
+      extras_topping.push(label.textContent);      
+    }
+    if(!topping.checked){
+      totalPrice = totalPrice - parseInt(topping.value)
+      price = parseInt(pancake.value) + totalPrice
+      updatePrice(price)
+      /* removing unchecked topping from toppings_order (array) */
+      toppings_order = toppings_order.filter((my_topping)=> my_topping != label.textContent);
+       /* removing unchecked extra topping from extras_topping (array) */
+      extras_topping = extras_topping.filter((my_topping)=> my_topping != label.textContent);
+    }
+
   });
 });
 
-
-/* If Order (radio buttons) options selected */
-button.addEventListener('click', function() {
-  const userName = document.querySelector('#userName').value;
-  const eat = document.querySelector('label[for= eat]').innerHTML;
-  const pickup = document.querySelector('label[for= pickUp]').innerHTML;
-  const deliver = document.querySelector('label[for= deliver]').innerHTML;
-  order.name = userName;
-  for (let radio of radios) {
-    if(radio.checked && radio.id == 'eat'){
-      order.option = eat;
-    }
-    if(radio.checked && radio.id == 'pickUp'){
-      order.option = pickup;
-    }
-   
+radioButton.addEventListener('click', (e)=>{
+  for (let radio of radios) { 
+    const label = document.querySelector(`label[for="${radio.id}"]`);
+    let finalPrice;
     if (radio.checked && radio.id === 'deliver') {
-      if(!isDeliverSelected) {
-        if(radio.value === '5') {
-          totalPrice = totalPrice + parseInt(radio.value);
-          priceBanner.textContent = `$${totalPrice}`;
-          priceDisplay.querySelector('#totalPrice').textContent = `$${totalPrice}`;
-          isDeliverSelected = true;
-          order.option = deliver;
-        }
-      }
-      
-    }else if(radio.checked && radio.id != 'deliver' && isDeliverSelected) {  
-
-      totalPrice = totalPrice - 5;
-      priceBanner.textContent = `$${totalPrice}`;
-      priceDisplay.querySelector('#totalPrice').textContent = `$${totalPrice}`;
-      isDeliverSelected = false;
+      finalPrice = totalPrice + parseInt(radio.value) + parseInt(pancake.value);
+      updatePrice(finalPrice) 
+      deliveryMethod = `${label.textContent}`;     
+    }
+    if(radio.checked && radio.id != 'deliver') { 
+      finalPrice = totalPrice + parseInt(pancake.value);
+      updatePrice(finalPrice)
+      deliveryMethod = `${label.textContent}`; 
     }
   }
 
 });
+  
+  // For Order Details to Display
+function orderDetails(){
+  const customerName = document.querySelector('#userName').value;
+  const newOrder = new Order(
+    pancake.selectedOptions[0].innerText,
+    toppings_order,
+    extras_topping,
+    deliveryMethod,
+    customerName);
+  
+  const placeOrder = document.querySelector('.placeOrder');
+  placeOrder.innerHTML = `<p>Name: ${newOrder.customerName} </p> 
+  <p>Pancake type: ${newOrder.pancake} </p>
+  <p>Toppings: ${newOrder.topping.join(", ")}</p>
+  <p>Extras: ${newOrder.extras.join(", ")}</p>
+  <p>Delivery method:${newOrder.deliveryMethod} </p>
+  <h4>${priceDisplay.textContent}</h4> `                                  // total price
+}
 
-seeOrder.addEventListener('click', () => {
-  console.log(order);
+seeOrder.addEventListener('click', orderDetails);
 
-});
-
-
-
-
-
-/*
-   Bug 1:  unchecked checkbox while changing select type (pancake).
-*/
+pancake.addEventListener('change', updateInitial);

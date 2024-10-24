@@ -2,36 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Pancake Maker</title>
+    <title>Pancake Special</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <div class="image-container">
         <img src="pancake.jpeg" alt="Delicious pancakes" />
-        <div class="price-banner"><span id="totalPrice">$5</span></div>
+        <div class="price-banner"><span id="totalPrice">€5</span></div>
       </div>
       <div class="form-container">
-        <h2>Customize Your Pancake</h2>
+        <h2>Your Pancake Choice </h2>
         <div class="customization-section">
           <label for="type">Choose your pancake type:</label>
           <select id="type">
-            <option value="5">Classic - $5</option>
-            <option value="6">Chocolate - $6</option>
-            <option value="7">Blueberry - $7</option>
+            <option value="5">Classic - €5</option>
+            <option value="6">Chocolate - €6</option>
+            <option value="7">Blueberry - €7</option>
           </select>
         </div>
         <div class="customization-section">
-          <p>Select your toppings ($1 each):</p>
-          <input type="checkbox" id="nuts" value="1" />Nuts<br />
-          <input type="checkbox" id="bananas" value="1" />Bananas<br />
-          <input type="checkbox" id="syrup" value="1" />Syrup<br />
+          <p>Select your toppings (€1 each):</p>
+          <input type="checkbox" id="nuts" value="1" name="topping" /><label for="nuts">Nuts</label><br />
+          <input type="checkbox" id="bananas" value="1"  name="topping"/><label for="bananas">Bananas</label><br />
+          <input type="checkbox" id="syrup" value="1" name="topping"/><label for="syrup">Syrup</label><br />
         </div>
         <div class="customization-section">
           <p>Add extras:</p>
-          <input type="checkbox" id="whippedCream" value="2" />Whipped Cream -
-          $2<br />
-          <input type="checkbox" id="iceCream" value="3" />Ice Cream - $3<br />
+          <input type="checkbox" id="whippedCream" value="2" name="extra" /><label for="whippedCream">Whipped Cream -
+            €2</label><br />
+          <input type="checkbox" id="iceCream" value="3" name="extra"/><label for="iceCream">Ice Cream - €3</label><br />
         </div>
           <fieldset>
             <div>
@@ -39,7 +39,7 @@
               <input type="text" id="userName" required/>
             </div>
             <div>
-              <p> Delivery Charge $5</p>
+              <p> Delivery Charge €5</p>
               <input type="radio" id="eat" name="choose" value="eat" checked />
               <label for="eat">Eat</label>
             </div>
@@ -53,11 +53,11 @@
             </div>
             <button id="submit"> SUBMIT </button>
             <div class="price-display">
-              <h3>Total Price: <span id="totalPrice">$5</span></h3>
+              <h3>Total Price: <span id="totalPrice">€5</span></h3>
             </div>
             <button id="seeOrder">See Order</button>
-            <div class="order">
-              <p> Your's Order are:</p>
+            <div class="placeOrder">
+        
             </div>
           </fieldset>
     </div>
